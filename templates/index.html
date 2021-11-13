@@ -1,18 +1,35 @@
 <html>
-    <body>
-
-    <form id='form_target' method='post' action='target_add'>
-        <input  id='txt_target' name='target' type='text'/>
-        <input  value='send' type='submit'/>
-    </form>
-        
+  <head>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/css/bootstrap.css') }}">
+    <script src='{{ url_for('static',filename='styles/js/bootstrap.js') }}'></script>
+  </head>
+  <body>
+    <div class='container'>
+      <div class='head'>
+      </div>
+      <form id='form_target' method='post' action='target_add' class='row g-12'>
+        <div class="col-auto">
+          <label class='form-control-plaintext'>domain</label>
+        </div>
+        <div class='col-auto'>
+          
+          <input  name='target' type='text' class='form-control'/>
+        </div>
+        <div class='col-auto'>
+          <input  value='send' type='submit' class= 'btn btn-primary' />
+        </div>
+      </form>
+    </div>
     {% block content %}
   <table id="data" class="table table-striped">
     <thead>
       <tr>
-        <th>id</th>
-        <th>domain</th>
-        <th>url</th>
+        <th>Id</th>
+        <th>Domain</th>
+        <th>Status</th>
+        <th>AddTime</th>
+        <th>StartTime</th>
+        <th>EndTime</th>
         <th>delete</th>
       </tr>
     </thead>
@@ -21,7 +38,10 @@
         <tr>
           <td>{{ target.id }}</td>
           <td>{{ target.domain }}</td>
-          <td>{{ target.url }}</td>
+          <td>{{ target.status }}</td>
+          <td>{{ target.addtime}}</td>
+          <td>{{ target.starttime }}</td>
+          <td>{{ target.endtime }}</td>
            <td><a href='/target_del/{{target.id}}'>x</a></td>
         </tr>
       {% endfor %}
