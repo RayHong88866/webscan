@@ -1,0 +1,32 @@
+<html>
+    <body>
+
+    <form id='form_target' method='post' action='target_add'>
+        <input  id='txt_target' name='target' type='text'/>
+        <input  value='send' type='submit'/>
+    </form>
+        
+    {% block content %}
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>domain</th>
+        <th>url</th>
+        <th>delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for target in targets %}
+        <tr>
+          <td>{{ target.id }}</td>
+          <td>{{ target.domain }}</td>
+          <td>{{ target.url }}</td>
+           <td><a href='/target_del/{{target.id}}'>x</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+    </body>
+</html>
