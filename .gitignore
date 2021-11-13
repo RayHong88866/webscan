@@ -1,1 +1,3 @@
 *.sqlite
+/SecLists
+*.txt

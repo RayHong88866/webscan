@@ -1,0 +1,27 @@
+<html>
+ <head>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/css/bootstrap.css') }}">
+    <script src='{{ url_for('static',filename='styles/js/bootstrap.js') }}'></script>
+</head>
+<p>{{domain}}<p>
+
+ {% block content %}
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for subdomain in subdomains %}
+        <tr>
+          <td>{{ subdomain.id }}</td>
+          <td>{{ subdomain.name }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+    </body>
+</html>

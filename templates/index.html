@@ -4,19 +4,21 @@
     <script src='{{ url_for('static',filename='styles/js/bootstrap.js') }}'></script>
   </head>
   <body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark  justify-content-center">
+        <a class="navbar-brand " href="#">Recon web</a>
+    </nav>
     <div class='container'>
-      <div class='head'>
-      </div>
-      <form id='form_target' method='post' action='target_add' class='row g-12'>
-        <div class="col-auto">
-          <label class='form-control-plaintext'>domain</label>
+      </br>
+      <form id='form_target' method='post' action='target_add' class='row justify-content-center' >
+        <div class="col-auto ">
+          <label class='form-control-plaintext'>Domain</label>
         </div>
         <div class='col-auto'>
           
           <input  name='target' type='text' class='form-control'/>
         </div>
         <div class='col-auto'>
-          <input  value='send' type='submit' class= 'btn btn-primary' />
+          <input  value='Insert' type='submit' class= 'btn btn-primary' />
         </div>
       </form>
     </div>
@@ -37,7 +39,7 @@
       {% for target in targets %}
         <tr>
           <td>{{ target.id }}</td>
-          <td>{{ target.domain }}</td>
+          <td><a href='/dns/{{ target.domain }}'>{{ target.domain }}</a></td>
           <td>{{ target.status }}</td>
           <td>{{ target.addtime}}</td>
           <td>{{ target.starttime }}</td>

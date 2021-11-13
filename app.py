@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-from db.db import db,target
+from db.db import db,target,subdomains
 
 app = Flask(__name__)
     
@@ -32,3 +32,7 @@ def delete(id):
   
     return  redirect('/')
 
+@app.route('/dns/<name>')
+def dns_page(name):
+    t = subdomains.query.filter_by(name=name).all()
+    return render_template('dns.html',subdomains=t, domain=name)
