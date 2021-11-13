@@ -32,7 +32,8 @@ def delete(id):
   
     return  redirect('/')
 
-@app.route('/dns/<name>')
-def dns_page(name):
-    t = subdomains.query.filter_by(name=name).all()
-    return render_template('dns.html',subdomains=t, domain=name)
+@app.route('/dns/<target_name>/<id>')
+def dns_page(target_name, id):
+    t = subdomains.query.filter_by(target_id=id).all()
+    print(t)
+    return render_template('dns.html', subdomains=t, domain=target_name)

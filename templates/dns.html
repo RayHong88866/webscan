@@ -1,11 +1,12 @@
-<html>
- <head>
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/css/bootstrap.css') }}">
-    <script src='{{ url_for('static',filename='styles/js/bootstrap.js') }}'></script>
-</head>
+{% extends 'index.html' %}
 <p>{{domain}}<p>
 
  {% block content %}
+  <div class="row justify-content-center">
+        <div class="col-auto ">
+          <label class='form-control-plaintext'>{{domain}}</label>
+        </div>
+    </div>
   <table id="data" class="table table-striped">
     <thead>
       <tr>
@@ -23,5 +24,3 @@
     </tbody>
   </table>
 {% endblock %}
-    </body>
-</html>
