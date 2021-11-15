@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from db.db import db,target,subdomains
+from module.gobuster import gobuster
 
 app = Flask(__name__)
     
@@ -21,7 +22,7 @@ def index():
 
 @app.route('/target_add',methods = ['POST'])
 def add():
-    target(domain = request.form.get('target'), status='queue').add()
+    target(domain = request.form.get('target'),scount=0, status='queue').add()
     return  redirect('/')
 
 @app.route('/target_del/<id>')
@@ -37,3 +38,12 @@ def dns_page(target_name, id):
     t = subdomains.query.filter_by(target_id=id).all()
     print(t)
     return render_template('dns.html', subdomains=t, domain=target_name)
+
+
+@app.route('/scan/<target_name>/<id>')
+def scan(target_name, id):
+    t = target.query.filter_by(id = id)    
+    if t[0].status == 'queue':
+        gobuster.dns(target_name, id)
+
+    return  redirect('/')
